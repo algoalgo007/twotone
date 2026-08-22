@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>투톤인테리어 - 두 개의 색, 하나의 완성</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Swiper.js CSS (3D 회전 슬라이더용) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  
+  <!-- FontAwesome 아이콘 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts (Noto Sans KR & Montserrat) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Noto Sans KR', 'sans-serif'],
+            mont: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              gold: '#D4AF37',
+              dark: '#121212',
+              card: '#1E1E1E',
+              accent: '#C5A059'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Swiper 3D 커버플로우 입체 스타일 조정 */
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 320px;
+      height: 440px;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+    @media (min-width: 768px) {
+      .swiper-slide {
+        width: 480px;
+        height: 600px;
+      }
+    }
+    /* 비포애프터 비교 슬라이더 커스텀 */
+    .img-comp-container {
+      position: relative;
+      height: 450px;
+    }
+    .img-comp-img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .img-comp-overlay {
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      border-right: 3px solid #C5A059;
+    }
+  </style>
+</head>
+<body class="bg-[#0B0B0B] text-slate-100 font-sans selection:bg-brand-gold selection:text-black">
+
+  <!-- 헤더 / 네비게이션 -->
+  <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black/60 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="flex items-center gap-2">
+        <span class="font-mont font-extrabold text-2xl tracking-wider text-white">Twotone<span class="text-brand-accent">Interior</span></span>
+      </a>
+      
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+        <a href="#hero" class="hover:text-brand-accent transition">홈</a>
+        <a href="#3d-gallery" class="hover:text-brand-accent transition">3D 쇼룸</a>
+        <a href="#before-after" class="hover:text-brand-accent transition">BEFORE & AFTER</a>
+        <a href="#portfolio" class="hover:text-brand-accent transition">포트폴리오</a>
+        <a href="#process" class="hover:text-brand-accent transition">진행절차</a>
+      </nav>
+
+      <button onclick="openModal()" class="bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white text-xs font-bold px-5 py-2.5 rounded-full tracking-wider transition shadow-lg shadow-amber-900/30">
+        무료 견적 문의
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero 히어로 섹션 -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80" alt="Luxury Interior Hero" class="w-full h-full object-cover opacity-40 scale-105 animate-pulse duration-[10000ms]">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0B0B0B] via-[#0B0B0B]/60 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto text-center px-6">
+      <span class="text-brand-accent font-mont font-semibold text-xs md:text-sm tracking-[0.3em] uppercase mb-4 inline-block px-4 py-1.5 rounded-full border border-brand-accent/30 bg-brand-accent/10">
+        Premium Interior Remodeling
+      </span>
+      <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-6 tracking-tight">
+        두 개의 색, <br class="md:hidden">그리고 <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600">하나의 완성</span>
+      </h1>
+      <p class="text-slate-300 text-base md:text-lg max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+        500회 이상의 리모델링 투톤 인테리어에서 두개의 색, 하나의 완성을 경험해보세요 <br>정강구 화이팅 WE ARE TRINITY WE ARE ECONOMICS
+      </p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#3d-gallery" class="bg-white text-black font-bold px-8 py-4 rounded-full hover:bg-brand-accent hover:text-white transition duration-300 flex items-center justify-center gap-2">
+          <span>포트폴리오 돌아보기</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+        <button onclick="openModal()" class="border border-white/30 backdrop-blur-sm text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition">
+          1:1 간편 견적 상담
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3D 회전 사진 갤러리 섹션 (Swiper Coverflow) -->
+  <section id="3d-gallery" class="py-24 bg-gradient-to-b from-[#0B0B0B] via-neutral-900 to-[#0B0B0B] overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 mb-12 text-center">
+      <h2 class="text-xs font-mont tracking-[0.3em] text-brand-accent uppercase mb-2">3D Interactive Showroom</h2>
+      <h3 class="text-3xl md:text-4xl font-bold text-white">스크롤하고 드래그하여 시공 사례 감상하기</h3>
+      <p class="text-slate-400 text-sm mt-3">좌우로 드래그하거나 스크롤하여 완성된 시공 사진을 3D 체감으로 확인해보세요.</p>
+    </div>
+
+    <!-- 3D Swiper Carousel -->
+    <div class="swiper mySwiper py-10">
+      <div class="swiper-wrapper">
+        
+        <!-- Slide 1 (w-[...], h-[...] 명시 및 overflow-hidden 필수) -->
+        <div class="swiper-slide w-[280px] sm:w-[350px] md:w-[420px] h-[420px] md:h-[520px] rounded-2xl overflow-hidden shadow-2xl group relative cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=80" alt="거실 리모델링" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end">
+            <span class="text-brand-accent text-xs font-bold">반포 자이 54평형</span>
+            <h4 class="text-xl font-bold text-white mt-1">모던 미니멀리즘 거실</h4>
+            <p class="text-slate-300 text-xs mt-2 opacity-80">라인조명과 히든도어로 완성한 감성 공간</p>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="swiper-slide w-[280px] sm:w-[350px] md:w-[420px] h-[420px] md:h-[520px] rounded-2xl overflow-hidden shadow-2xl group relative cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1000&q=80" alt="주방 인테리어" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end">
+            <span class="text-brand-accent text-xs font-bold">한남 더힐 65평형</span>
+            <h4 class="text-xl font-bold text-white mt-1">대면형 세라믹 아일랜드 주방</h4>
+            <p class="text-slate-300 text-xs mt-2 opacity-80">최고급 세라믹 상판과 원목 플랩장</p>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="swiper-slide w-[280px] sm:w-[350px] md:w-[420px] h-[420px] md:h-[520px] rounded-2xl overflow-hidden shadow-2xl group relative cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80" alt="침실 인테리어" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end">
+            <span class="text-brand-accent text-xs font-bold">성수 트리마제 38평형</span>
+            <h4 class="text-xl font-bold text-white mt-1">호텔식 안방 마스터룸</h4>
+            <p class="text-slate-300 text-xs mt-2 opacity-80">무드등 간접조명과 템바보드 헤드월</p>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="swiper-slide w-[280px] sm:w-[350px] md:w-[420px] h-[420px] md:h-[520px] rounded-2xl overflow-hidden shadow-2xl group relative cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80" alt="욕실 리모델링" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end">
+            <span class="text-brand-accent text-xs font-bold">압구정 현대 45평형</span>
+            <h4 class="text-xl font-bold text-white mt-1">600각 포세린 타일 욕실</h4>
+            <p class="text-slate-300 text-xs mt-2 opacity-80">졸리컷 마감과 매립수전 시스템</p>
+          </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="swiper-slide w-[280px] sm:w-[350px] md:w-[420px] h-[420px] md:h-[520px] rounded-2xl overflow-hidden shadow-2xl group relative cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1000&q=80" alt="다이닝룸" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end">
+            <span class="text-brand-accent text-xs font-bold">목동 신시가지 32평형</span>
+            <h4 class="text-xl font-bold text-white mt-1">우드&화이트 펜던트 다이닝</h4>
+            <p class="text-slate-300 text-xs mt-2 opacity-80">따뜻한 원목 감성의 홈카페 스타일</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="swiper-pagination !-bottom-2"></div>
+    </div>
+  </section>
+
+  <!-- BEFORE & AFTER 비교 인터랙티브 섹션 -->
+  <section id="before-after" class="py-20 max-w-6xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-xs font-mont tracking-[0.3em] text-brand-accent uppercase mb-2">Transformation</h2>
+      <h3 class="text-3xl font-bold text-white">비포 & 애프터 실시간 비교</h3>
+      <p class="text-slate-400 text-sm mt-2">마우스나 손가락으로 중앙 슬라이더 바를 좌우로 움직여 변신된 모습을 확인하세요.</p>
+    </div>
+
+    <div class="relative bg-neutral-900 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+      <div class="img-comp-container relative w-full select-none" id="comp-container">
+        <!-- After Image (바탕) -->
+        <div class="img-comp-img">
+          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=80" class="w-full h-full object-cover">
+          <span class="absolute top-4 right-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">AFTER (시공 후)</span>
+        </div>
+
+        <!-- Before Image (슬라이더로 조절되는 상단 레이어) -->
+        <div class="img-comp-overlay" id="comp-overlay">
+          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=80" class="w-full h-full object-cover max-w-none" id="before-img">
+          <span class="absolute top-4 left-4 bg-neutral-800 text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20">BEFORE (시공 전)</span>
+        </div>
+
+        <!-- Range Slider Handle -->
+        <input type="range" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 z-30 cursor-ew-resize" id="comp-slider" oninput="moveSlider(this.value)">
+      </div>
+    </div>
+  </section>
+
+  <!-- 포트폴리오 리스트 -->
+  <section id="portfolio" class="py-20 bg-neutral-950">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+        <div>
+          <h2 class="text-xs font-mont tracking-[0.3em] text-brand-accent uppercase mb-2">Our Works</h2>
+          <h3 class="text-3xl font-bold text-white">최신 프로젝트 포트폴리오</h3>
+          <p class="text-slate-400 text-sm mt-2">원하시는 현장을 클릭하시면 상세 시공 사진을 크게 보실 수 있습니다.</p>
+        </div>
+      </div>
+
+      <!-- 포트폴리오 그리드 (JS 렌더링 영역) -->
+      <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- JS 렌더링 영역 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 견적 상담 팝업 모달 -->
+  <div id="estimateModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[200] hidden flex items-center justify-center p-4">
+    <div class="bg-neutral-900 border border-white/10 w-full max-w-lg rounded-2xl p-8 relative shadow-2xl">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+      <div class="text-center mb-6 relative z-10">
+        <span class="text-brand-accent text-xs font-bold tracking-widest uppercase">Consulting</span>
+        <h3 class="text-2xl font-bold text-white mt-1">무료 방문 상담 & 견적 신청</h3>
+        <p class="text-slate-400 text-xs mt-2">아파트명과 평형을 입력해 주시면 전문 디자이너가 연락드립니다.</p>
+      </div>
+
+      <form onsubmit="alert('상담 신청이 완료되었습니다! 빠른 시일 내 연락드리겠습니다.'); closeModal(); return false;" class="space-y-4 relative z-10">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">성함</label>
+          <input type="text" required placeholder="홍길동" class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-accent transition">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">연락처</label>
+          <input type="tel" required placeholder="010-0000-0000" class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-accent transition">
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">아파트명</label>
+            <input type="text" placeholder="예: 반포자이" class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-accent transition">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">평형</label>
+            <input type="text" placeholder="예: 34평" class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-accent transition">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">예상 시공 시기 및 문의사항</label>
+          <textarea rows="3" placeholder="예: 다음달 입주 예정이며 거실 확장 포함 전체 리모델링 희망합니다." class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-accent transition"></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white font-bold py-3.5 rounded-lg text-sm tracking-wider shadow-lg mt-2 transition">
+          무료 상담 신청하기
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ★ 업데이트된 포트폴리오 풀스크린 상세 뷰 (블로그/포스트 형태) ★ -->
+  <div id="portfolioDetailView" class="fixed inset-0 bg-neutral-950 z-[100] hidden overflow-y-auto custom-scrollbar transition-opacity duration-300 opacity-0">
+    
+    <!-- 고정 헤더 -->
+    <div class="sticky top-0 w-full bg-black/90 backdrop-blur-md border-b border-white/10 z-50 px-6 py-4 flex justify-between items-center shadow-lg">
+      <h2 class="text-lg md:text-xl font-bold text-white font-mont">Twotone<span class="text-brand-accent">Interior</span> PORTFOLIO</h2>
+      <button onclick="closePortfolioDetail()" class="text-white hover:text-brand-accent text-3xl transition bg-white/5 w-10 h-10 flex items-center justify-center rounded-full">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- 본문 컨텐츠 컨테이너 (최대 너비를 넓게 잡아 사진을 크게 보여줌) -->
+    <div class="max-w-5xl mx-auto px-4 md:px-8 py-12 md:py-16">
+      
+      <!-- 프로젝트 제목 및 스펙 박스 -->
+      <div class="mb-16">
+        <div class="text-center mb-8">
+          <span class="text-brand-accent text-sm font-bold tracking-widest uppercase border border-brand-accent/30 bg-brand-accent/10 px-4 py-1.5 rounded-full inline-block mb-4">Project Preview</span>
+          <h3 id="detail-title" class="text-3xl md:text-5xl font-black text-white break-keep leading-tight">신대방 현대아파트 32평</h3>
+        </div>
+
+        <!-- 스펙 정보 (회색 박스) -->
+        <div class="bg-[#1A1A1A] border border-white/5 rounded-2xl p-6 md:p-10 shadow-2xl">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-sm">
+            <div class="flex border-b border-white/5 pb-3">
+              <span class="text-brand-accent font-semibold w-24 shrink-0">위치</span>
+              <span id="detail-location" class="text-slate-200 break-keep">서울시 동작구 여의대방로 28</span>
+            </div>
+            <div class="flex border-b border-white/5 pb-3">
+              <span class="text-brand-accent font-semibold w-24 shrink-0">면적/기간</span>
+              <span id="detail-size-time" class="text-slate-200 break-keep">32평 / 6주</span>
+            </div>
+            <div class="flex border-b border-white/5 pb-3">
+              <span class="text-brand-accent font-semibold w-24 shrink-0">구조변경</span>
+              <span id="detail-structure" class="text-slate-200 break-keep">거실 확장, 안방 드레스룸 가벽</span>
+            </div>
+            <div class="flex border-b border-white/5 pb-3">
+              <span class="text-brand-accent font-semibold w-24 shrink-0">기능</span>
+              <span id="detail-functions" class="text-slate-200 break-keep">창호 O / 시스템에어컨 O / 단열 X</span>
+            </div>
+            <div class="flex border-b border-white/5 pb-3 md:col-span-2">
+              <span class="text-brand-accent font-semibold w-24 shrink-0">마감재</span>
+              <span id="detail-materials" class="text-slate-200 break-keep leading-relaxed">
+                바닥 : 구정마루 그랜드 텍스처 165 본오크<br>
+                벽체(공용부) : 디아망 회벽 크림 화이트 PR002-12<br>
+                벽체(방) : 베스띠 프레스코 회벽 웜 미스트 그레이 82576-03
+              </span>
+            </div>
+            <div class="flex border-b border-white/5 pb-3">
+              <span class="text-brand-accent font-semibold w-24 shrink-0">가구</span>
+              <span id="detail-furniture" class="text-slate-200 break-keep">한솔 조슈아라이트, 포그그레이</span>
+            </div>
+            <div class="flex border-b border-white/5 pb-3">
+              <span class="text-brand-accent font-semibold w-24 shrink-0">주방상판</span>
+              <span id="detail-kitchen" class="text-slate-200 break-keep">ROME PHANTOM IVORY 세라믹</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 세로로 크게 나열되는 이미지 갤러리 15장 -->
+      <div id="detail-gallery" class="flex flex-col gap-6 md:gap-10">
+        <!-- JS로 큰 이미지들이 주루룩 생성됨 -->
+      </div>
+
+      <!-- 하단 견적 문의 유도 버튼 -->
+      <div class="mt-20 text-center border-t border-white/10 pt-16 pb-10">
+        <h4 class="text-2xl font-bold text-white mb-6">이 공간의 견적이 궁금하신가요?</h4>
+        <button onclick="openModal();" class="bg-brand-accent hover:bg-amber-500 text-black font-bold py-4 px-10 rounded-full text-lg transition shadow-[0_0_20px_rgba(197,160,89,0.3)] inline-flex items-center gap-3">
+          <i class="fa-solid fa-calculator"></i> 지금 바로 무료 견적받기
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 하단 푸터 -->
+  <footer class="bg-black border-t border-white/10 py-12 text-slate-500 text-xs">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <span class="font-mont font-extrabold text-xl text-white block mb-3">Twotone<span class="text-brand-accent">Interior</span></span>
+        <p class="leading-relaxed">주식회사 투톤인테리어 | 인테리어 전문 리모델링 브랜드</p>
+        <p class="mt-1">두 개의 색, 하나의 완성.</p>
+      </div>
+
+      <div>
+        <h5 class="text-white font-bold mb-3 text-sm">지점 안내</h5>
+        <p>강남본사: 서울특별시 강남구 학동로 166 2층 (논현동)</p>
+        <p class="mt-1">홍대지점: 서울특별시 마포구 월드컵북로6길 21 2층 (연남동)</p>
+        <p class="mt-1 text-brand-accent">대표번호: 02-6383-1888</p>
+      </div>
+
+      <div>
+        <h5 class="text-white font-bold mb-3 text-sm">Copyright</h5>
+        <p>Copyright © TwotoneInterior. All rights reserved.</p>
+        <div class="flex space-x-4 mt-4 text-base text-slate-400">
+          <a href="https://www.instagram.com/twotone.interior/" target="_blank" rel="noopener noreferrer" class="hover:text-white"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@%ED%88%AC%ED%86%A4%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4" target="_blank" rel="noopener noreferrer" class="hover:text-white"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://blog.naver.com/bareunds?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAcGRvZgJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAafxXzvZNDQ9kffC0ovJyxN0ujxkCRV4XNXhlyRG_LtAtE3Nb0mjuhFbHG-Uqw_aem_-UBeh08QccE4snKfLeSerg" target="_blank" rel="noopener noreferrer" class="hover:text-white"><i class="fa-solid fa-blog"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Swiper.js Script (3D 커버플로우 구동) -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    // 3D 커버플로우 회전 슬라이더 초기화
+    const swiper = new Swiper('.mySwiper', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      
+      // ★ 루프 안 함
+      loop: false, 
+
+      // ★ [핵심 1] 끝단(5번)에서 다시 되돌아올 때 덜컥거리는 저항 현상 제거
+      resistanceRatio: 0.85,
+
+      // ★ [핵심 2] 드래그하는 동안 3D 변형 좌표를 매 프레임마다 실시간으로 정확히 추적
+      watchSlidesProgress: true,
+
+      coverflowEffect: {
+        rotate: 15,          // ★ [핵심 3] 각도를 15~20 정도로 낮춰야 되돌아갈 때 3D 축이 안 꼬입니다.
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: false, // ★ [핵심 4] 역방향 드래그를 막는 3D 그림자 레이어 끄기
+      },
+
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+
+    // Before & After 비교 슬라이더 제어
+    function moveSlider(val) {
+      document.getElementById('comp-overlay').style.width = val + '%';
+      document.getElementById('before-img').style.width = (100 / (val / 100)) + '%';
+    }
+
+    // 상담 모달 제어
+    function openModal() { document.getElementById('estimateModal').classList.remove('hidden'); }
+    function closeModal() { document.getElementById('estimateModal').classList.add('hidden'); }
+
+    // 포트폴리오 12개 데이터
+    const portfolioData = [
+      {
+        id: 1, title: "신대방 현대아파트 32평", badge: "32평형 리모델링", summary: "구정마루 그랜드 텍스처와 디아망 회벽으로 완성한 하이엔드 공간",
+        thumbnail: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80",
+        location: "서울시 동작구 여의대방로 28", size: "32평", duration: "6주", structure: "거실 확장, 안방 드레스룸 가벽",
+        functions: "창호 O / 시스템에어컨 O / 단열 공사 X / 방수 공사 X",
+        materials: "바닥 : 구정마루 그랜드 텍스처 165 본오크<br>벽체(공용부) : 디아망 회벽 크림 화이트 PR002-12<br>벽체(방) : 베스띠 프레스코 회벽 웜 미스트 그레이 82576-03",
+        furniture: "한솔 조슈아라이트, 한솔 포그그레이", kitchen: "ROME PHANTOM IVORY 세라믹"
+      },
+      {
+        id: 2, title: "반포 자이 아파트 54평", badge: "54평형 펜트하우스", summary: "대면형 세라믹 아일랜드와 라인조명이 돋보이는 모던 럭셔리",
+        thumbnail: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80",
+        location: "서울시 서초구 신반포로 270", size: "54평", duration: "8주", structure: "주방 레이아웃 전면 수정, 욕실 조적 파티션",
+        functions: "창호 O / 시스템에어컨 O / 단열 공사 O / 방수 공사 O",
+        materials: "바닥 : 천연 대리석 비앙코 카라라<br>벽체(공용부) : 벤자민무어 친환경 도장<br>벽체(방) : 실크벽지 화이트",
+        furniture: "제작 가구 (무광 화이트 & 월넛 우드)", kitchen: "이태리 수입 천연 칸스톤"
+      },
+      {
+        id: 3, title: "성수 트리마제 38평", badge: "38평형 리모델링", summary: "한강 뷰를 극대화한 미니멀 화이트 인테리어",
+        thumbnail: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+        location: "서울시 성동구 왕십리로 16", size: "38평", duration: "5주", structure: "거실 폴딩도어 철거 및 확장, 히든도어 시공",
+        functions: "창호 X / 시스템에어컨 O / 단열 공사 O / 방수 공사 X",
+        materials: "바닥 : 동화 자연마루 나투스진<br>벽체 : 전체 디아망 모던 화이트",
+        furniture: "PET 무광 화이트", kitchen: "LX 하우시스 오로라 블랑"
+      },
+      {
+        id: 4, title: "잠실 엘스 아파트 45평", badge: "45평형 리모델링", summary: "따뜻한 웜톤 우드와 간접조명의 조화", thumbnail: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
+        location: "서울시 송파구 올림픽로 99", size: "45평", duration: "6주", structure: "알파룸 가벽 철거 후 다이닝룸 조성", functions: "창호 O / 에어컨 O", materials: "바닥: 광폭 강마루<br>벽체: 친환경 실크벽지", furniture: "한솔 도어 페트", kitchen: "세라믹 상판 동일 마감"
+      },
+      {
+        id: 5, title: "마포 래미안 푸르지오 34평", badge: "34평형 리모델링", summary: "신혼부부를 위한 감성적인 홈카페 스타일링", thumbnail: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=800&q=80",
+        location: "서울시 마포구 마포대로 195", size: "34평", duration: "4주", structure: "주방 아일랜드 신설", functions: "창호 X / 에어컨 O", materials: "바닥: 포세린 타일 600각<br>벽체: 실크벽지", furniture: "E0 등급 맞춤가구", kitchen: "인조대리석 크리스탈"
+      },
+      {
+        id: 6, title: "한남 더힐 65평", badge: "65평형 하이엔드", summary: "갤러리를 연상케 하는 웅장한 도장 마감 프로젝트", thumbnail: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80",
+        location: "서울시 용산구 한남대로 91", size: "65평", duration: "10주", structure: "마스터룸 욕실 확장, 전실 게이트 신설", functions: "전체 올수리", materials: "바닥: 원목마루<br>벽체: 스페셜 도장", furniture: "이태리 직수입 가구", kitchen: "불탑(Bulthaup) 주방가구"
+      },
+      {
+        id: 7, title: "목동 신시가지 7단지 27평", badge: "27평형 리모델링", summary: "공간 활용도를 극대화한 소형 평수 레이아웃의 정석", thumbnail: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80",
+        location: "서울시 양천구 목동서로", size: "27평", duration: "4주", structure: "거실 확장, 주방 구조 변경", functions: "창호 O / 단열 O", materials: "바닥: 강마루<br>벽체: 실크벽지", furniture: "무광 화이트", kitchen: "LX 하우시스"
+      },
+      {
+        id: 8, title: "판교 푸르지오 그랑블 39평", badge: "39평형 리모델링", summary: "호텔식 건식 욕실과 대면형 주방의 완벽한 조화", thumbnail: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80",
+        location: "경기도 성남시 분당구 동판교로", size: "39평", duration: "5주", structure: "욕실 조적 욕조, 주방 벽체 철거", functions: "전체 시공", materials: "바닥: 600각 타일<br>벽체: 벤자민무어", furniture: "한솔 포그그레이", kitchen: "칸스톤 루나화이트"
+      },
+      {
+        id: 9, title: "광교 중흥S클래스 44평", badge: "44평형 리모델링", summary: "루버 디자인과 간접등으로 포인트를 준 아트월", thumbnail: "https://images.unsplash.com/photo-1593696140826-c58b021acf8b?auto=format&fit=crop&w=800&q=80",
+        location: "경기도 수원시 영통구 광교호수공원로", size: "44평", duration: "6주", structure: "아트월 조성, 안방 구조변경", functions: "창호 X / 에어컨 O", materials: "바닥: 대리석 타일<br>벽체: 도장 및 벽지", furniture: "제작 가구", kitchen: "세라믹 상판"
+      },
+      {
+        id: 10, title: "여의도 자이 56평", badge: "56평형 리모델링", summary: "클래식과 모던이 공존하는 웨인스코팅 인테리어", thumbnail: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+        location: "서울시 영등포구 여의동로", size: "56평", duration: "7주", structure: "전체 웨인스코팅, 폴딩도어", functions: "창호 O / 에어컨 O", materials: "바닥: 헤링본 원목마루<br>벽체: 벤자민무어 도장", furniture: "프렌치 스타일 맞춤가구", kitchen: "천연 대리석"
+      },
+      {
+        id: 11, title: "압구정 현대아파트 42평", badge: "42평형 구축 리모델링", summary: "오래된 구축의 환골탈태, 배관부터 다시 잡은 기초공사", thumbnail: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+        location: "서울시 강남구 압구정로", size: "42평", duration: "8주", structure: "전체 설비 재시공, 분배기 이전", functions: "창호, 단열, 방수, 에어컨 전부", materials: "바닥: 동화마루 나투스진<br>벽체: 실크", furniture: "E0 등급 무광가구", kitchen: "인조대리석"
+      },
+      {
+        id: 12, title: "송도 더샵 퍼스트월드 60평", badge: "60평형 펜트하우스", summary: "높은 층고를 살린 웅장한 복층형 디자인", thumbnail: "https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=800&q=80",
+        location: "인천시 연수구 해돋이로", size: "60평", duration: "9주", structure: "계단실 재조성, 보이드 공간 조명", functions: "전체 리모델링", materials: "바닥: 포세린 타일<br>벽체: 스페셜 도장", furniture: "수입 가구 배치", kitchen: "하이엔드 세라믹"
+      }
+    ];
+
+    // 고화질 인테리어 이미지 풀 (15장을 만들기 위해 반복 사용)
+    const galleryImagePool = [
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80"
+    ];
+
+    // 포트폴리오 리스트 렌더링
+    const gridContainer = document.getElementById("portfolio-grid");
+    portfolioData.forEach((item, index) => {
+      const cardHTML = `
+        <div onclick="openPortfolioDetail(${index})" class="bg-neutral-900 rounded-xl overflow-hidden border border-white/5 hover:border-brand-accent/40 transition duration-300 group cursor-pointer shadow-lg hover:shadow-brand-accent/10 flex flex-col h-full">
+          <div class="relative h-64 overflow-hidden shrink-0">
+            <img src="${item.thumbnail}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+            <span class="absolute top-3 left-3 bg-black/80 backdrop-blur-md text-brand-accent text-[10px] font-bold px-3 py-1.5 rounded uppercase tracking-wider">${item.badge}</span>
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+              <span class="bg-brand-accent text-black font-bold px-5 py-2.5 rounded-full text-sm shadow-lg">크게 보기 +</span>
+            </div>
+          </div>
+          <div class="p-6 flex flex-col grow">
+            <h4 class="font-bold text-lg text-white group-hover:text-brand-accent transition">${item.title}</h4>
+            <p class="text-slate-400 text-xs mt-2 line-clamp-2 grow">${item.summary}</p>
+            <div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center text-xs text-slate-500">
+              <span>시공기간: ${item.duration}</span>
+              <span class="text-brand-accent font-semibold">자세히 보기 &rarr;</span>
+            </div>
+          </div>
+        </div>
+      `;
+      gridContainer.innerHTML += cardHTML;
+    });
+
+    // 상세 모달 열기
+    function openPortfolioDetail(index) {
+      const data = portfolioData[index];
+      
+      // 텍스트 바인딩
+      document.getElementById("detail-title").innerText = data.title;
+      document.getElementById("detail-location").innerText = data.location;
+      document.getElementById("detail-size-time").innerText = `${data.size} / ${data.duration}`;
+      document.getElementById("detail-structure").innerText = data.structure;
+      document.getElementById("detail-functions").innerText = data.functions;
+      document.getElementById("detail-materials").innerHTML = data.materials;
+      document.getElementById("detail-furniture").innerText = data.furniture;
+      document.getElementById("detail-kitchen").innerText = data.kitchen;
+
+      // 15개 갤러리 이미지 주루룩(세로) 배치 (w-full 로 꽉 차게)
+      const galleryContainer = document.getElementById("detail-gallery");
+      galleryContainer.innerHTML = ""; 
+      
+      for(let i=0; i<15; i++) {
+        const imgSrc = galleryImagePool[i % galleryImagePool.length]; 
+        galleryContainer.innerHTML += `
+          <img src="${imgSrc}" loading="lazy" class="w-full h-auto object-cover rounded-xl md:rounded-2xl shadow-xl border border-white/5">
+        `;
+      }
+
+      // 모달 열기 처리
+      const modal = document.getElementById("portfolioDetailView");
+      modal.classList.remove("hidden");
+      // 최상단으로 스크롤 이동
+      modal.scrollTop = 0;
+      
+      setTimeout(() => { modal.classList.remove("opacity-0"); modal.classList.add("opacity-100"); }, 10);
+      document.body.style.overflow = "hidden"; // 바탕 페이지 스크롤 방지
+    }
+
+    // 상세 모달 닫기
+    function closePortfolioDetail() {
+      const modal = document.getElementById("portfolioDetailView");
+      modal.classList.remove("opacity-100");
+      modal.classList.add("opacity-0");
+      
+      setTimeout(() => {
+        modal.classList.add("hidden");
+        document.body.style.overflow = "auto"; // 바탕 스크롤 복구
+      }, 300);
+    }
+  </script>
+</body>
+</html>
