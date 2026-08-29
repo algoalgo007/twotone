@@ -185,3 +185,49 @@ function closePortfolioDetail() {
     document.body.style.overflow = "auto"; // 바탕 스크롤 복구
   }, 300);
 }
+
+// HTML 뼈대가 모두 그려진 다음에 스크립트가 작동하도록 감싸줍니다.
+document.addEventListener('DOMContentLoaded', function() {
+  
+  const contactForm = document.getElementById('contactForm');
+  
+  // 현재 페이지에 폼이 있을 때만 아래 코드 실행 (다른 페이지에서 에러 방지)
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault(); 
+      
+      const form = e.target;
+      const submitBtn = document.getElementById('submitBtn');
+      const formData = new FormData(form);
+      
+      // ★ 1단계에서 발급받은 구글 스크립트 URL 입력
+      const scriptURL = 'https://script.google.com/macros/s/AKfycby9SmTzLdED3ag47XYqJrXp324k1_Y75bN7-ye9U-Kc22ZCTw43dOMlEPjf4A6EpEw6pw/exec';
+
+      // 전송 중복 방지
+      submitBtn.disabled = true;
+      submitBtn.innerText = '전송 중...';
+
+      fetch(scriptURL, { method: 'POST', body: formData })
+        .then(response => {
+          alert('상담 신청이 완료되었습니다! 빠른 시일 내 연락드리겠습니다.');
+          form.reset(); 
+          
+          // closeModal 함수가 정상적으로 존재하는지 확인 후 실행 (안전장치)
+          if (typeof closeModal === 'function') {
+            closeModal();
+          } else {
+            console.warn('closeModal 함수를 찾을 수 없습니다.');
+          }
+        })
+        .catch(error => {
+          alert('네트워크 오류가 발생했습니다. 다시 시도해주세요.');
+          console.error('Error!', error.message);
+        })
+        .finally(() => {
+          // 버튼 상태 복구
+          submitBtn.disabled = false;
+          submitBtn.innerText = '무료 상담 신청하기';
+        });
+    });
+  }
+});
