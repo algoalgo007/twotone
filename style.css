@@ -1,0 +1,37 @@
+/* Swiper 3D 커버플로우 입체 스타일 조정 */
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 320px;
+  height: 440px;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .swiper-slide {
+    width: 480px;
+    height: 600px;
+  }
+}
+
+/* 비포애프터 비교 슬라이더 커스텀 */
+.img-comp-container {
+  position: relative;
+  height: 450px;
+}
+
+.img-comp-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.img-comp-overlay {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  border-right: 3px solid #C5A059;
+}
