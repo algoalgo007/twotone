@@ -41,9 +41,9 @@ function closeModal() { document.getElementById('estimateModal').classList.add('
 // 포트폴리오 12개 데이터
 const portfolioData = [
   {
-    id: 1, title: "신대방 현대아파트 32평", badge: "32평형 리모델링", summary: "구정마루 그랜드 텍스처와 디아망 회벽으로 완성한 하이엔드 공간",
-    thumbnail: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80",
-    location: "서울시 동작구 여의대방로 28", size: "32평", duration: "6주", structure: "거실 확장, 안방 드레스룸 가벽",
+    id: 1, title: "완수포차", badge: "20평형 리모델링", summary: "힙한 느낌의 감성 공간",
+    thumbnail: "../twotone/img/img1.jpeg",
+    location: "안산 중앙구", size: "20평", duration: "4주", structure: "철거 후 주방, 홀, 테라스 공간, 전체 리모델링",
     functions: "창호 O / 시스템에어컨 O / 단열 공사 X / 방수 공사 X",
     materials: "바닥 : 구정마루 그랜드 텍스처 165 본오크<br>벽체(공용부) : 디아망 회벽 크림 화이트 PR002-12<br>벽체(방) : 베스띠 프레스코 회벽 웜 미스트 그레이 82576-03",
     furniture: "한솔 조슈아라이트, 한솔 포그그레이", kitchen: "ROME PHANTOM IVORY 세라믹"
@@ -104,8 +104,8 @@ const portfolioData = [
 
 // 고화질 인테리어 이미지 풀 (15장을 만들기 위해 반복 사용)
 const galleryImagePool = [
-  "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80",
+  "../twotone/img/wansu1.jpeg",
+  "../twotone/img/wansu2.jpeg",
   "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
   "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1600&q=80",
   "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1600&q=80",
