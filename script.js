@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const formData = new FormData(form);
       
       // ★ 1단계에서 발급받은 구글 스크립트 URL 입력
-      const scriptURL = 'https://script.google.com/macros/s/AKfycby9SmTzLdED3ag47XYqJrXp324k1_Y75bN7-ye9U-Kc22ZCTw43dOMlEPjf4A6EpEw6pw/exec';
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzK1Rz7sLs9yXsqUE9bgXTocvcsq2eRQpKp1jzMhOW9IUdE3cv69x5ClxbXEeItZuop/exec';
 
       // 전송 중복 방지
       submitBtn.disabled = true;
