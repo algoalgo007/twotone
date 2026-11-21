@@ -104,6 +104,14 @@
 
     <div class="swiper mySwiper py-10">
       <div class="swiper-wrapper">
+        <div class="swiper-slide w-[280px] sm:w-[350px] md:w-[420px] h-[420px] md:h-[520px] rounded-2xl overflow-hidden shadow-2xl group relative cursor-pointer">
+          <img src="./img/tuvThumb.jpeg" alt="Tüv Süd" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end">
+            <span class="text-brand-accent text-xs font-bold">Tüv Süd 140평형</span>
+            <h4 class="text-xl font-bold text-white mt-1">공장 철거</h4>
+            <p class="text-slate-300 text-xs mt-2 opacity-80">내/외부 전체철거</p>
+          </div>
+        </div>
         
         <div class="swiper-slide w-[280px] sm:w-[350px] md:w-[420px] h-[420px] md:h-[520px] rounded-2xl overflow-hidden shadow-2xl group relative cursor-pointer">
           <img src="./img/img1.jpeg" alt="완수 포차" class="w-full h-full object-cover">
@@ -179,12 +187,12 @@
     </div>
   </section>
 
-  <section id="portfolio" class="py-20 bg-neutral-950" style="display: none;">
+  <section id="portfolio" class="py-20 bg-neutral-950">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-col md:flex-row justify-between items-end mb-12">
         <div>
           <h2 class="text-xs font-mont tracking-[0.3em] text-brand-accent uppercase mb-2">Our Works</h2>
-          <h3 class="text-3xl font-bold text-white">최신 프로젝트 포트폴리오</h3>
+          <h3 class="text-3xl font-bold text-white">프로젝트 포트폴리오</h3>
           <p class="text-slate-400 text-sm mt-2">원하시는 현장을 클릭하시면 상세 시공 사진을 크게 보실 수 있습니다.</p>
         </div>
       </div>
@@ -249,48 +257,28 @@
       <div class="mb-16">
         <div class="text-center mb-8">
           <span class="text-brand-accent text-sm font-bold tracking-widest uppercase border border-brand-accent/30 bg-brand-accent/10 px-4 py-1.5 rounded-full inline-block mb-4">Project Preview</span>
-          <h3 id="detail-title" class="text-3xl md:text-5xl font-black text-white break-keep leading-tight">신대방 현대아파트 32평</h3>
+          <h3 data-detail="title" class="text-3xl md:text-5xl font-black text-white break-keep leading-tight">신대방 현대아파트 32평</h3>
         </div>
 
         <div class="bg-[#1A1A1A] border border-white/5 rounded-2xl p-6 md:p-10 shadow-2xl">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-sm">
             <div class="flex border-b border-white/5 pb-3">
               <span class="text-brand-accent font-semibold w-24 shrink-0">위치</span>
-              <span id="detail-location" class="text-slate-200 break-keep">서울시 동작구 여의대방로 28</span>
+              <span data-detail="location" class="text-slate-200 break-keep">서울시 동작구 여의대방로 28</span>
             </div>
             <div class="flex border-b border-white/5 pb-3">
               <span class="text-brand-accent font-semibold w-24 shrink-0">면적/기간</span>
-              <span id="detail-size-time" class="text-slate-200 break-keep">32평 / 6주</span>
+              <span data-detail="size-time" class="text-slate-200 break-keep">32평 / 6주</span>
             </div>
             <div class="flex border-b border-white/5 pb-3">
               <span class="text-brand-accent font-semibold w-24 shrink-0">구조변경</span>
-              <span id="detail-structure" class="text-slate-200 break-keep">거실 확장, 안방 드레스룸 가벽</span>
-            </div>
-            <div class="flex border-b border-white/5 pb-3">
-              <span class="text-brand-accent font-semibold w-24 shrink-0">기능</span>
-              <span id="detail-functions" class="text-slate-200 break-keep">창호 O / 시스템에어컨 O / 단열 X</span>
-            </div>
-            <div class="flex border-b border-white/5 pb-3 md:col-span-2">
-              <span class="text-brand-accent font-semibold w-24 shrink-0">마감재</span>
-              <span id="detail-materials" class="text-slate-200 break-keep leading-relaxed">
-                바닥 : 구정마루 그랜드 텍스처 165 본오크<br>
-                벽체(공용부) : 디아망 회벽 크림 화이트 PR002-12<br>
-                벽체(방) : 베스띠 프레스코 회벽 웜 미스트 그레이 82576-03
-              </span>
-            </div>
-            <div class="flex border-b border-white/5 pb-3">
-              <span class="text-brand-accent font-semibold w-24 shrink-0">가구</span>
-              <span id="detail-furniture" class="text-slate-200 break-keep">한솔 조슈아라이트, 포그그레이</span>
-            </div>
-            <div class="flex border-b border-white/5 pb-3">
-              <span class="text-brand-accent font-semibold w-24 shrink-0">주방상판</span>
-              <span id="detail-kitchen" class="text-slate-200 break-keep">ROME PHANTOM IVORY 세라믹</span>
+              <span data-detail="structure" class="text-slate-200 break-keep">거실 확장, 안방 드레스룸 가벽</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div id="detail-gallery" class="flex flex-col gap-6 md:gap-10">
+      <div class="detail-gallery flex flex-col gap-6 md:gap-10">
         <!-- 갤러리 이미지 스크립트로 렌더링 -->
       </div>
 
@@ -315,9 +303,6 @@
       <div>
         <h5 class="text-white font-bold mb-3 text-sm">찾아오는곳</h5>
         <p>본사: 경기도 수원시 영통구 삼성로 274 139호, 140호, 141호</p>
-        <!--
-        <p class="mt-1">홍대지점: 서울특별시 마포구 월드컵북로6길 21 2층 (연남동)</p>
-        -->
         <p class="mt-1 text-brand-accent">대표번호: 010-8132-7375</p>
       </div>
 
@@ -325,7 +310,7 @@
         <h5 class="text-white font-bold mb-3 text-sm">Copyright</h5>
         <p>Copyright © TwotoneWorks. All rights reserved.</p>
         <div class="flex space-x-4 mt-4 text-base text-slate-400">
-          <a href="https://www.instagram.com/twotone.interior/" target="_blank" rel="noopener noreferrer" class="hover:text-white"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.instagram.com/twotoneworks/" target="_blank" rel="noopener noreferrer" class="hover:text-white"><i class="fa-brands fa-instagram"></i></a>
           <a href="https://www.youtube.com/@%ED%88%AC%ED%86%A4%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4" target="_blank" rel="noopener noreferrer" class="hover:text-white"><i class="fa-brands fa-youtube"></i></a>
           <a href="https://blog.naver.com/bareunds" target="_blank" rel="noopener noreferrer" class="hover:text-white"><i class="fa-solid fa-blog"></i></a>
         </div>
